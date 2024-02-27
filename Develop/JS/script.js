@@ -41,5 +41,52 @@ function getWeather(lat, lon) {
         });
 }
 
+// Function to display weather data including the 5-day forecast
+function displayWeather(data) {
+    const weatherResult = document.getElementById('weatherResult');
+    weatherResult.innerHTML = ''; // Clear previous results
+    weatherResult.classList.remove('hidden'); // Make sure the container is visible
 
+    // Display city name
+    const cityName = document.createElement('h2');
+    cityName.textContent = `Weather for ${data.city.name}, ${data.city.country}`;
+    weatherResult.appendChild(cityName);
+
+    // Create and append elements for the 5-day forecast
+    const forecast = document.createElement('div');
+    forecast.className = 'forecast-container';
+
+    data.list.forEach((item, index) => {
+        // This crude filtering selects the midday forecast for each day if available
+        if (index % 8 === 0) {
+            const day = document.createElement('div');
+            day.className = 'forecast-day'; // Assuming you have styles for this
+
+            const date = new Date(item.dt * 1000); // Convert timestamp to milliseconds
+            const dateStr = document.createElement('h4');
+            dateStr.textContent = date.toDateString();
+            day.appendChild(dateStr);
+
+            const temp = document.createElement('p');
+            temp.textContent = `Temp: ${item.main.temp}°C`;
+            day.appendChild(temp);
+
+            const weather = document.createElement('p');
+            weather.textContent = `Weather: ${item.weather[0].main}`;
+            day.appendChild(weather);
+
+            forecast.appendChild(day);
+        }
+    });
+
+    weatherResult.appendChild(forecast);
+}
+
+
+// Function to display errors
+function displayError(message) {
+    const weatherResult = document.getElementById('weatherResult');
+    weatherResult.innerHTML = `<p class="text-red-500">${message}</p>`; // Display the error message in red
+    weatherResult.classList.remove('hidden'); // Ensure the container is visible to show the error
+}
 
