@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // Function to fetch coordinates for a city name
 function getCoordinates(cityName) {
-    const geocodeUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=cdbf7e3553654a94648c9a96256a94ce
+    const geocodeUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=cdbf7e3553654a94648c9a96256a94ce`;
     fetch(geocodeUrl)
         .then(response => response.json())
         .then(data => {
@@ -26,5 +26,20 @@ function getCoordinates(cityName) {
             displayError('An error occurred while fetching coordinates.'); // Handle network or other fetch errors
         });
 }
+
+// Function to fetch weather data using latitude and longitude
+function getWeather(lat, lon) {
+    const weatherUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=cdbf7e3553654a94648c9a96256a94ce&units=metric`;
+    
+    fetch(weatherUrl)
+        .then(response => response.json())
+        .then(data => {
+            displayWeather(data); // Display the fetched weather data on the page
+        })
+        .catch(error => {
+            displayError('An error occurred while fetching weather data.'); // Handle network or other fetch errors
+        });
+}
+
 
 
