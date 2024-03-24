@@ -66,6 +66,11 @@ function displayWeather(data) {
     wind.textContent = `Wind: ${data.list[0].wind.speed.toFixed(2)} MPH`;
     currentWeather.appendChild(wind);
 
+    const humidity = document.createElement('p');
+    humidity.className = 'text-gray-700';
+    humidity.textContent = `Humidity: ${data.list[0].main.humidity} %`;
+    currentWeather.appendChild(humidity);
+
     weatherResult.appendChild(forecast);
 }
 
