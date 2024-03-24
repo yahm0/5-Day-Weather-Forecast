@@ -73,7 +73,14 @@ function displayWeather(data) {
 
     weatherResult.appendChild(forecast);
 }
+ // Create and append elements for the 5-day forecast
+const forecast = document.createElement('div');
+    forecast.className = 'mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4';
 
+    // Assuming that each day's forecast is available at index multiples of 8
+    for (let i = 0; i < data.list.length; i += 8) {
+        const day = document.createElement('div');
+        day.className = 'bg-white p-4 rounded-lg shadow-lg'
 
 // Function to display errors
 function displayError(message) {
