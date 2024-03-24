@@ -89,9 +89,14 @@ const forecast = document.createElement('div');
         dateStr.textContent = date.toLocaleDateString();
         day.appendChild(dateStr);
 
+        const dayTemp = document.createElement('p');
+        dayTemp.className = 'text-gray-700';
+        dayTemp.textContent = `Temp: ${data.list[i].main.temp.toFixed(2)}°C`;
+        day.appendChild(dayTemp);
 
 
-        
+
+
 // Function to display errors
 function displayError(message) {
     const weatherResult = document.getElementById('weatherResult');
