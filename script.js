@@ -47,14 +47,14 @@ function displayWeather(data) {
     weatherResult.innerHTML = ''; // Clear previous results
     weatherResult.classList.remove('hidden'); // Make sure the container is visible
 
-    // Display city name
-    const cityName = document.createElement('h2');
-    cityName.textContent = `Weather for ${data.city.name}, ${data.city.country}`;
-    weatherResult.appendChild(cityName);
+    // Display city name and current weather
+    const currentWeather = document.createElement('div');
+    currentWeather.className = 'bg-white p-6 rounded-lg shadow-lg'
 
-    // Create and append elements for the 5-day forecast
-    const forecast = document.createElement('div');
-    forecast.className = 'forecast-container';
+    const cityName = document.createElement('h2');
+    cityName.className = 'text-xl font-bold';
+    cityName.textContent = `Weather for ${data.city.name}, ${data.city.country}`;
+    currentWeather.appendChild(cityName);
 
     data.list.forEach((item, index) => {
         // This crude filtering selects the midday forecast for each day if available
