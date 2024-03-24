@@ -82,6 +82,16 @@ const forecast = document.createElement('div');
         const day = document.createElement('div');
         day.className = 'bg-white p-4 rounded-lg shadow-lg'
 
+
+        const date = new Date(data.list[i].dt * 1000);
+        const dateStr = document.createElement('h4');
+        dateStr.className = 'font-bold';
+        dateStr.textContent = date.toLocaleDateString();
+        day.appendChild(dateStr);
+
+
+
+        
 // Function to display errors
 function displayError(message) {
     const weatherResult = document.getElementById('weatherResult');
