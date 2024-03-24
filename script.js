@@ -94,6 +94,11 @@ const forecast = document.createElement('div');
         dayTemp.textContent = `Temp: ${data.list[i].main.temp.toFixed(2)}°C`;
         day.appendChild(dayTemp);
 
+        const dayWind = document.createElement('p');
+        dayWind.className = 'text-gray-700';
+        dayWind.textContent = `Wind: ${data.list[i].wind.speed.toFixed(2)} MPH`;
+        day.appendChild(dayWind);
+
 
 
 
