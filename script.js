@@ -49,7 +49,7 @@ function displayWeather(data) {
 
     // Display city name and current weather
     const currentWeather = document.createElement('div');
-    currentWeather.className = 'bg-white p-6 rounded-lg shadow-lg';
+    currentWeather.className = 'bg-white p-6 rounded-lg shadow-lg bg-blue-100';
 
     const cityName = document.createElement('h2');
     cityName.className = 'text-xl font-bold';
@@ -80,7 +80,7 @@ const forecast = document.createElement('div');
     // Assuming that each day's forecast is available at index multiples of 8
     for (let i = 0; i < data.list.length; i += 8) {
         const day = document.createElement('div');
-        day.className = 'bg-white p-4 rounded-lg shadow-lg'
+        day.className = 'bg-white p-4 rounded-lg shadow-lg bg-blue-100'
 
 
         const date = new Date(data.list[i].dt * 1000);
