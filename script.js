@@ -49,7 +49,7 @@ function displayWeather(data) {
 
     // Display city name and current weather
     const currentWeather = document.createElement('div');
-    currentWeather.className = 'bg-white p-6 rounded-lg shadow-lg'
+    currentWeather.className = 'bg-white p-6 rounded-lg shadow-lg';
 
     const cityName = document.createElement('h2');
     cityName.className = 'text-xl font-bold';
@@ -71,8 +71,8 @@ function displayWeather(data) {
     humidity.textContent = `Humidity: ${data.list[0].main.humidity} %`;
     currentWeather.appendChild(humidity);
 
-    weatherResult.appendChild(forecast);
-}
+    weatherResult.appendChild(currentWeather);
+
  // Create and append elements for the 5-day forecast
 const forecast = document.createElement('div');
     forecast.className = 'mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4';
@@ -105,6 +105,11 @@ const forecast = document.createElement('div');
         day.appendChild(dayHumidity);
 
         forecast.appendChild(day);
+    }
+
+    weatherResult.appendChild(forecast);
+
+}
 
 
 
