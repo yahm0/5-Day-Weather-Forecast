@@ -5,9 +5,25 @@ document.addEventListener('DOMContentLoaded', function () {
       const cityName = document.getElementById('city').value; // Get the city name from the input field
       if (cityName) {
         getCoordinates(cityName); // If a city name is provided, fetch its coordinates
+        displayRecommendedCities(cityName); // New function to display recommended cities
       }
     });
   });
+
+  function displayRecommendedCities(searchedCity) {
+    const recommendedCities = ['New York', 'Los Angeles', 'Chicago', 'Houston', 'Phoenix', 'Philadelphia', 'San Antonio']; // Example cities
+    const list = document.getElementById('recommendedCities').querySelector('ul');
+    list.innerHTML = ''; // Clear previous recommendations
+    recommendedCities.forEach(city => {
+        if (city !== searchedCity) { // Avoid recommending the city that was searched for
+            const li = document.createElement('li');
+            li.textContent = city;
+            li.classList.add('p-2', 'hover:bg-gray-100', 'cursor-pointer');
+            li.addEventListener('click', () => getCoordinates(city)); // Add click event to fetch weather for recommended city
+            list.appendChild(li);
+        }
+    });
+}
 
 // Function to fetch coordinates for a city name
 function getCoordinates(cityName) {
