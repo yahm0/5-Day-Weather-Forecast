@@ -61,6 +61,10 @@ function displayWeather(data) {
     temp.textContent = `Temp: ${data.list[0].main.temp.toFixed(2)}°C`;
     currentWeather.appendChild(temp);
 
+    const wind = document.createElement('p');
+    wind.className = 'text-gray-700';
+    wind.textContent = `Wind: ${data.list[0].wind.speed.toFixed(2)} MPH`;
+    currentWeather.appendChild(wind);
 
     weatherResult.appendChild(forecast);
 }
