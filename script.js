@@ -1,13 +1,13 @@
 document.addEventListener('DOMContentLoaded', function () {
- // Listen for the submit button click event
- document.getElementById('submit').addEventListener('click', function (event) {
-    event.preventDefault(); // Prevent the form from submitting traditionally
-    const cityName = document.getElementById('city').value; // Get the city name from the input field
-    if (cityName) {
+    // Listen for the submit button click event
+    document.getElementById('submit').addEventListener('click', function (event) {
+      event.preventDefault(); // Prevent the form from submitting traditionally
+      const cityName = document.getElementById('city').value; // Get the city name from the input field
+      if (cityName) {
         getCoordinates(cityName); // If a city name is provided, fetch its coordinates
-    }
-});
-});
+      }
+    });
+  });
 
 // Function to fetch coordinates for a city name
 function getCoordinates(cityName) {
@@ -98,6 +98,13 @@ const forecast = document.createElement('div');
         dayWind.className = 'text-gray-700';
         dayWind.textContent = `Wind: ${data.list[i].wind.speed.toFixed(2)} MPH`;
         day.appendChild(dayWind);
+
+        const dayHumidity = document.createElement('p');
+        dayHumidity.className = 'text-gray-700';
+        dayHumidity.textContent = `Humidity: ${data.list[i].main.humidity} %`;
+        day.appendChild(dayHumidity);
+
+        forecast.appendChild(day);
 
 
 
