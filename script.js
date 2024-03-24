@@ -56,28 +56,11 @@ function displayWeather(data) {
     cityName.textContent = `Weather for ${data.city.name}, ${data.city.country}`;
     currentWeather.appendChild(cityName);
 
-    data.list.forEach((item, index) => {
-        // This crude filtering selects the midday forecast for each day if available
-        if (index % 8 === 0) {
-            const day = document.createElement('div');
-            day.className = 'forecast-day'; // Assuming you have styles for this
+    const temp = document.createElement('p');
+    temp.className = 'text-gray-700';
+    temp.textContent = `Temp: ${data.list[0].main.temp.toFixed(2)}°C`;
+    currentWeather.appendChild(temp);
 
-            const date = new Date(item.dt * 1000); // Convert timestamp to milliseconds
-            const dateStr = document.createElement('h4');
-            dateStr.textContent = date.toDateString();
-            day.appendChild(dateStr);
-
-            const temp = document.createElement('p');
-            temp.textContent = `Temp: ${item.main.temp}°C`;
-            day.appendChild(temp);
-
-            const weather = document.createElement('p');
-            weather.textContent = `Weather: ${item.weather[0].main}`;
-            day.appendChild(weather);
-
-            forecast.appendChild(day);
-        }
-    });
 
     weatherResult.appendChild(forecast);
 }
