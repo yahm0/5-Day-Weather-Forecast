@@ -1,18 +1,18 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Fetch the last searched city from local storage and update weather
+    // Fetch the last searched city from local storage
     const lastSearch = localStorage.getItem('lastSearch');
     if (lastSearch) {
-        document.getElementById('city').value = lastSearch; // Display last searched city in input field
-        getCoordinates(lastSearch);
+        getCoordinates(lastSearch); // Fetch weather for the last searched city
     }
 
+    // Listen for the submit button click event
     document.getElementById('submit').addEventListener('click', function (event) {
         event.preventDefault(); // Prevent the form from submitting traditionally
-        const cityName = document.getElementById('city').value.trim(); // Get the city name from the input field, trimming any whitespace
+        const cityName = document.getElementById('city').value; // Get the city name from the input field
         if (cityName) {
             localStorage.setItem('lastSearch', cityName); // Store the search in local storage
-            getCoordinates(cityName);
-            displayRecommendedCities(cityName); // Display recommended cities
+            getCoordinates(cityName); // If a city name is provided, fetch its coordinates
+            displayRecommendedCities(cityName); // New function to display recommended cities
         }
     });
 });
@@ -22,7 +22,7 @@ function displayRecommendedCities(searchedCity) {
     const list = document.getElementById('recommendedCities').querySelector('ul');
     list.innerHTML = ''; // Clear previous recommendations
     recommendedCities.forEach(city => {
-        if (city.toLowerCase() !== searchedCity.toLowerCase()) {
+        if (city !== searchedCity) {
             const li = document.createElement('li');
             li.textContent = city;
             li.classList.add('p-2', 'hover:bg-gray-100', 'cursor-pointer');
@@ -34,9 +34,6 @@ function displayRecommendedCities(searchedCity) {
         }
     });
 }
-
-// Ensure getCoordinates and displayWeather functions are correctly implemented as per your initial setup.
-
 
 function displayWeather(data) {
     const weatherResult = document.getElementById('weatherResult');
