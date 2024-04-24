@@ -84,12 +84,6 @@ function displayWeather(data) {
     cityName.textContent = `Weather for ${data.city.name}, ${data.city.country}`;
     currentWeather.appendChild(cityName);
 
-    const iconCurrent = document.createElement('img');
-    iconCurrent.src = `https://openweathermap.org/img/wn/${data.list[0].weather[0].icon}.png`;
-    iconCurrent.alt = 'Current weather icon';
-    iconCurrent.className = 'weather-icon';
-    currentWeather.appendChild(iconCurrent);
-
     const temp = document.createElement('p');
     temp.className = 'text-gray-700';
     temp.textContent = `Temp: ${data.list[0].main.temp.toFixed(2)}°C`;
@@ -107,26 +101,21 @@ function displayWeather(data) {
 
     weatherResult.appendChild(currentWeather);
 
-    // Create and append elements for the 5-day forecast
-    const forecast = document.createElement('div');
+ // Create and append elements for the 5-day forecast
+const forecast = document.createElement('div');
     forecast.className = 'mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4';
 
     // Assuming that each day's forecast is available at index multiples of 8
     for (let i = 0; i < data.list.length; i += 8) {
         const day = document.createElement('div');
-        day.className = 'bg-white p-4 rounded-lg shadow-lg bg-blue-100';
+        day.className = 'bg-white p-4 rounded-lg shadow-lg bg-blue-100'
+
 
         const date = new Date(data.list[i].dt * 1000);
         const dateStr = document.createElement('h4');
         dateStr.className = 'font-bold';
         dateStr.textContent = date.toLocaleDateString();
         day.appendChild(dateStr);
-
-        const iconDay = document.createElement('img');
-        iconDay.src = `https://openweathermap.org/img/wn/${data.list[i].weather[0].icon}.png`;
-        iconDay.alt = 'Weather icon';
-        iconDay.className = 'weather-icon';
-        day.appendChild(iconDay);
 
         const dayTemp = document.createElement('p');
         dayTemp.className = 'text-gray-700';
@@ -147,9 +136,8 @@ function displayWeather(data) {
     }
 
     weatherResult.appendChild(forecast);
+
 }
-
-
 
 // Function to display errors
 function displayError(message) {
