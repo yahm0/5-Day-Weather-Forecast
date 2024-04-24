@@ -1,7 +1,8 @@
 # 5 Day Weather Forecast
 
 <p>
-<img src="./assets/imgs/image.png" alt="5 Day Weather Forecast>
+<img src="./assets/imgs/image.png" alt="5 Day Weather Forecast">
+</p>
 
 ## Overview
 The Weather Dashboard is a simple yet powerful web application that provides users with the current and forecasted weather conditions for cities worldwide. Leveraging the OpenWeatherMap API, it displays weather information such as temperature, humidity, wind speed, and a 5-day forecast, ensuring users have the data they need to plan their days effectively.
